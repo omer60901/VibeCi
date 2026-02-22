@@ -1,0 +1,28 @@
+{
+  "name": "jest-puppeteer-ci",
+  "version": "1.0.0",
+  "description": "Automated testing with Jest and Puppeteer + GitHub Actions CI",
+  "scripts": {
+    "test": "jest --testTimeout=30000",
+    "test:unit": "jest tests/unit --testTimeout=10000",
+    "test:e2e": "jest tests/e2e --testTimeout=30000"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "puppeteer": "^21.0.0",
+    "jest-puppeteer": "^9.0.0"
+  },
+  "jest": {
+    "projects": [
+      {
+        "displayName": "unit",
+        "testMatch": ["<rootDir>/tests/unit/**/*.test.js"]
+      },
+      {
+        "displayName": "e2e",
+        "preset": "jest-puppeteer",
+        "testMatch": ["<rootDir>/tests/e2e/**/*.test.js"]
+      }
+    ]
+  }
+}
